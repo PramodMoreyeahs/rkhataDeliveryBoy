@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "198784193933",
+    "firebase_url": "https://livspacedelivery.firebaseio.com",
+    "project_id": "livspacedelivery",
+    "storage_bucket": "livspacedelivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198784193933:android:3ef7e377f89a653ed299c4",
+        "android_client_info": {
+          "package_name": "in.moreyeahs.livspace.delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198784193933-ujjs55lpi3bunqrf5vlm5svl3c2a6r4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT55_VrmOvzvz9Ce7ZpHxq4WjPbwnS1lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198784193933-ujjs55lpi3bunqrf5vlm5svl3c2a6r4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198784193933:android:041150c7226c7640d299c4",
+        "android_client_info": {
+          "package_name": "in.moreyeahs.livspace.delivery.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198784193933-ujjs55lpi3bunqrf5vlm5svl3c2a6r4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT55_VrmOvzvz9Ce7ZpHxq4WjPbwnS1lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198784193933-ujjs55lpi3bunqrf5vlm5svl3c2a6r4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

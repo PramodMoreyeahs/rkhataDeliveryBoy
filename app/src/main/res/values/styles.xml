@@ -1,0 +1,72 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/status_bar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+    </style>
+
+    <style name="Text">Text</style>
+
+    <style name="CustomDialog" parent="@style/AppTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="CommanstyleAB" parent="@style/Text">
+        <item name="android:fontFamily">@font/avalon_book</item>
+    </style>
+
+    <style name="CommanStyleSF" parent="@style/Text">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="SegoeUIBold" parent="@style/Text">
+        <item name="android:fontFamily">@font/segoe_ui_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="SegoeUISemiBold" parent="@style/Text">
+        <item name="android:fontFamily">@font/segoe_ui_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="SegoeUI" parent="@style/Text">
+        <item name="android:fontFamily">@font/segoe_ui</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="SegoeUIBoldItalic" parent="@style/Text">
+        <item name="android:fontFamily">@font/segoe_ui_bolditalic</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/colorAccent</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/cardview_light_background
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
+
+
+
+    </style>
+</resources>

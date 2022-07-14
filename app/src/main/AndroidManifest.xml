@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="in.moreyeahs.livspace.delivery">
+
+    <application
+        android:name=".utilities.MyApplication"
+        android:allowBackup="false"
+        android:fullBackupOnly="false"
+        android:icon="@drawable/delivery_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/security_config"
+        android:noHistory="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:replace="android:allowBackup">
+        <activity android:name=".views.main.DeliveryRequestsActivity" />
+        <activity android:name=".views.main.HDFCActivity" />
+        <!--
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCv0EKZ7WxirSW0V-lrUI6zKt-8hl5QwRU" />
+        -->
+        <activity
+            android:name=".views.main.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.main.WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.RejectedOrderPlaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.HistoryDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.ScanCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.MapsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.AnyOrientationCaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".views.main.DrivingDirectionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity
+            android:name=".views.main.ChangeLanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.OrderPlaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.ChequeCollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.BarcodeScanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.main.ScannedBarcodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.returnorder.ReturnOrderListActivity"
+            android:label="@string/return_orders"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".views.returnorder.ReturnOrderDetailActivity"
+            android:label=""
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".views.main.NewOrderPlaceActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".views.main.PoListByAssignmentActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBR06JQMaQrd_Fnqn643-IroL_vL_bg9LI" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path"
+                tools:replace="android:resource" />
+        </provider>
+
+        <receiver
+            android:name=".service.TimerRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="uk.ac.shef.oak.ActivityRecognition.RestartSensor" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true" />
+        <service
+            android:name=".service.TimerService"
+            android:enabled="true" />
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:stopWithTask="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name=" android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+</manifest>
