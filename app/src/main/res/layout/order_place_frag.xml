@@ -690,7 +690,7 @@
                                     android:background="@color/white"
                                     android:orientation="horizontal"
                                     android:padding="10dp"
-                                    android:visibility="gone">
+                                    android:visibility="visible">
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -778,7 +778,7 @@
                                                 android:layout_weight="1"
                                                 android:background="@drawable/grey_oval"
                                                 android:gravity="center"
-                                                android:minHeight="35dp"
+                                                android:minHeight="40dp"
                                                 android:orientation="horizontal">
 
                                                 <Spinner
@@ -787,6 +787,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginStart="20dp"
+
                                                     android:layout_marginEnd="10dp"
                                                     android:spinnerMode="dropdown" />
                                             </LinearLayout>
@@ -794,7 +795,7 @@
 
                                         <LinearLayout
                                             android:layout_width="0dp"
-                                            android:layout_height="35dp"
+                                            android:layout_height="45dp"
                                             android:layout_gravity="center"
                                             android:layout_weight="1"
                                             android:layout_marginTop="@dimen/view_margin_10"
@@ -804,7 +805,7 @@
 
                                             <ImageView
                                                 android:layout_width="15dp"
-                                                android:layout_height="15dp"
+                                                android:layout_height="11dp"
                                                 android:contentDescription="@string/app_name"
                                                 app:srcCompat="@drawable/ic_rupee_indian" />
 

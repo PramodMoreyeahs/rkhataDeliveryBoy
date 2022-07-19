@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_height="wrap_content"
+    android:padding="@dimen/view_padding_10"
+    android:background="@drawable/whiterectangle"
+    android:layout_width="match_parent">
 <TextView android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="@dimen/view_margin_20"
     android:padding="5dp"
     android:textColor="@color/black"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    />
 
+</RelativeLayout>

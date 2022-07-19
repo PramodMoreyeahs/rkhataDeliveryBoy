@@ -232,11 +232,11 @@ public interface APIServices {
     @GET("api/KKReturnReplace/ChangeStatus")
     Observable<JsonElement> updateReturnRequestStatus(@Query("KKReturnReplaceId") int KKRequestId, @Query("Status") String status, @Query("dboyId") int dBoyId, @Query("picker_comment") String pickerComment, @Query("ReturnReplaceImage") String returnReplaceImage);
 
-    @GET("/api/DeliveryTask/cashcollectionbydboy")
-    Observable<JsonElement> getcashCollection(@Query("mob") String mobile);
+    @GET("/api/DeliveryTask/cashcallectionpg")
+    Observable<JsonElement> getcashCollection(@Query("mob") String mobile,@Query("page") int page,@Query("list") int limit);
 
-    @GET("/api/DeliveryTask/creditcallection")
-    Observable<JsonElement> getcreditCollection(@Query("mob") String mobile);
+    @GET("/api/DeliveryTask/creditcallectionpg")
+    Observable<JsonElement> getcreditCollection(@Query("mob") String mobile,@Query("page") int page,@Query("list") int limit);
 
 
 }

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -71,6 +74,7 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
     Boolean apiType=false;
     double totoalAmount=0;
     TextView text;
+    int page = 1, limit = 5;
     ArrayList<CashCollectionResponse.ListData> cashList= new ArrayList<>();
 
     public CashCollectionFragment() {
@@ -99,6 +103,7 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
         return mBinding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -106,39 +111,41 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
         setActionBarConfiguration();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void initView() {
         rvPendingRackRV = mBinding.rvPenddingTask;
         rvPendingRackRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rvPendingRackRV.setHasFixedSize(true);
+        getCashList();
+
+        mBinding.nsvAddress.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
+                    // in this method we are incrementing page number,
+                    // making progress bar visible and calling get data method.
+                    limit++;
+                    mBinding.progressBottom.setVisibility(View.VISIBLE);
+                  getCashList();
+                }
+            }
+        });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("FragmentLiveDataObserve")
     private void setData() {
          apiType = getArguments().getBoolean("type");
         pendingTaskViewModel = ViewModelProviders.of(this).get(PendingTaskViewModel.class);
         mBinding.setPendingTaskViewModel(pendingTaskViewModel);
         mBinding.setLifecycleOwner(this);
-        initView();
-        pendingTaskViewModel.getCashData().observe(this, apiResponse -> consumeResponse(apiResponse));
 
+        pendingTaskViewModel.getCashData().observe(this, apiResponse -> consumeResponse(apiResponse));
+        initView();
         /***
          * Pending Task API call
          * **/
-        if (!Utils.checkInternetConnection(getActivity())) {
-            Utils.setToast(getActivity(), getResources().getString(R.string.network_error));
-        } else {
 
-                 if(apiType)
-                 {
-                     pendingTaskViewModel.cashCollection(SharePrefs.getInstance(getActivity()).getString(SharePrefs.MOBILE));
-                 }
-                 else
-                 {
-                     pendingTaskViewModel.creditCollection(SharePrefs.getInstance(getActivity()).getString(SharePrefs.MOBILE));
-                 }
-
-
-        }
         /***
          * Accept response
          * **/
@@ -166,6 +173,24 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
     /*
      * method to handle response
      * */
+
+    public void getCashList(){
+        if (!Utils.checkInternetConnection(getActivity())) {
+            Utils.setToast(getActivity(), getResources().getString(R.string.network_error));
+        } else {
+
+            if(apiType)
+            {
+                pendingTaskViewModel.cashCollection(SharePrefs.getInstance(getActivity()).getString(SharePrefs.MOBILE),page, limit);
+            }
+            else
+            {
+                pendingTaskViewModel.creditCollection(SharePrefs.getInstance(getActivity()).getString(SharePrefs.MOBILE),page, limit);
+            }
+
+
+        }
+    }
     private void consumeResponse(ApiResponse apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
@@ -174,7 +199,7 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
                 break;
             case SUCCESS:
                 mBinding.proRelatedItem.setVisibility(View.GONE);
-
+                mBinding.progressBottom.setVisibility(View.GONE);
                 renderSuccessResponse(apiResponse.data);
                 break;
 
@@ -200,16 +225,16 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
                 try {
                     JSONObject obj = new JSONObject(response.toString());
                     CashCollectionResponse pendingTaskModel = new Gson().fromJson(obj.toString(), CashCollectionResponse.class);
-
+                    totoalAmount=pendingTaskModel.getTotalCollection();
                     cashList.clear();
                     cashList.addAll(pendingTaskModel.getData());
                     CashCollectionAdapter adapter = new CashCollectionAdapter(getActivity(),cashList, this);
                     rvPendingRackRV.setAdapter(adapter);
                     Log.e("CASH list Size *******",""+cashList.size());
-                    for (int i=0;i<cashList.size();i++)
+                  /*  for (int i=0;i<cashList.size();i++)
                     {
                         totoalAmount=totoalAmount+cashList.get(i).getAmount();
-                    }
+                    }*/
                     text.setTextColor(apiType?Color.parseColor("#38a561"):
                             Color.parseColor("#FF0000"));
                     if(apiType)

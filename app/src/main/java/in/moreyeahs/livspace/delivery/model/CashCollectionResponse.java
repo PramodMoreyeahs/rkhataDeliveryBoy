@@ -7,6 +7,7 @@ import java.util.List;
 public class CashCollectionResponse implements Serializable {
            private Boolean Status;
         private String Message;
+   private double TotalCollection;
 
         private List<ListData> Data;
 
@@ -34,7 +35,11 @@ public class CashCollectionResponse implements Serializable {
             this.Data = Data;
         }
 
-        public static class ListData implements Serializable {
+    public double getTotalCollection() {
+        return TotalCollection;
+    }
+
+    public static class ListData implements Serializable {
             private Boolean Delete;
 
             private String Status;

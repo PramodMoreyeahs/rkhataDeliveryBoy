@@ -76,8 +76,8 @@ public class PendingTaskViewModel  extends ViewModel {
                 ));
     }
 
-    public void cashCollection(String mobile ) {
-        disposables.add(RestClient.getInstance().getService().getcashCollection(mobile)
+    public void cashCollection(String mobile,int page,int limit ) {
+        disposables.add(RestClient.getInstance().getService().getcashCollection(mobile,page,limit)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
@@ -101,8 +101,8 @@ public class PendingTaskViewModel  extends ViewModel {
                         }
                 ));
     }
-    public void creditCollection(String mobile ) {
-        disposables.add(RestClient.getInstance().getService().getcreditCollection(mobile)
+    public void creditCollection(String mobile ,int page,int limit) {
+        disposables.add(RestClient.getInstance().getService().getcreditCollection(mobile,page,limit)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override

@@ -1073,8 +1073,7 @@ public class NewOrderPlaceActivity extends AppCompatActivity implements CropImag
             });
 
 
-            ArrayAdapter cashAdaptor= ArrayAdapter.createFromResource(this,R.array.cash_collection, R.layout.spinner_text);
-            spCash.setMinimumHeight(30);
+            ArrayAdapter cashAdaptor= ArrayAdapter.createFromResource(this,R.array.cash_collection, android.R.layout.simple_spinner_dropdown_item);
             spCash.setAdapter(cashAdaptor);
             spCash.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
