@@ -99,10 +99,13 @@ public class MyAssignmentFragment extends Fragment {
         toolbar.setVisibility(View.VISIBLE);
         TextView tittleTextView = getActivity().findViewById(R.id.toolbar_title);
         TextView starttimer = getActivity().findViewById(R.id.start_timer);
+        TextView textView = getActivity().findViewById(R.id.tv_amount);
+
         TextView tv_assignmentid = getActivity().findViewById(R.id.assignmentid);
         RelativeLayout rvTiltleLayout = getActivity().findViewById(R.id.title_layout);
         tv_assignmentid.setVisibility(View.GONE);
         starttimer.setVisibility(View.GONE);
+        textView.setVisibility(View.GONE);
         tittleTextView.setVisibility(View.VISIBLE);
         TextView timer = getActivity().findViewById(R.id.tv_timer);
         timer.setVisibility(View.GONE);

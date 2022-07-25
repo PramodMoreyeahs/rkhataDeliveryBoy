@@ -196,13 +196,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             try {
-                if (!BuildConfig.DEBUG) {
+                if (BuildConfig.DEBUG) {
                     if (!Utils.checkInternetConnection(MainActivity.this)) {
                         Utils.setToast(MainActivity.this, getString(R.string.network_error));
                     } else {
                         MainActivity.this.startService(new Intent(MainActivity.this, MyService.class));
                     }
-                    handler.postDelayed(timedTask, 300000);
+                    handler.postDelayed(timedTask, 1000);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

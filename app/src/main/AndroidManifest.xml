@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="in.moreyeahs.livspace.delivery">
 
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <application
         android:name=".utilities.MyApplication"
         android:allowBackup="false"

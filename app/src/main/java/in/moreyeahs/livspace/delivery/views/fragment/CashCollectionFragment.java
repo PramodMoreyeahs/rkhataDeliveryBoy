@@ -118,7 +118,7 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
         rvPendingRackRV.setHasFixedSize(true);
         getCashList();
 
-        mBinding.nsvAddress.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+       /* mBinding.nsvAddress.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
@@ -129,7 +129,7 @@ public class CashCollectionFragment extends Fragment implements AcceptClickInter
                   getCashList();
                 }
             }
-        });
+        });*/
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

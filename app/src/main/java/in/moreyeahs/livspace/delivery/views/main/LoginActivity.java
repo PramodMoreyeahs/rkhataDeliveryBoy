@@ -74,7 +74,11 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.loginResponse().observe(this, apiResponse -> consumeResponse(apiResponse));
         loginViewModel.tokenResponse().observe(this, apiResponse -> TokenconsumeResponse(apiResponse));
         forgetPasswordModel.getpassworddata().observe(this, apiResponse -> frogetpassresponse(apiResponse));
-        mBinding.tvForgotpassword.setOnClickListener(v -> ForgotPasswordPopup());
+        mBinding.tvForgotpassword.setOnClickListener(v -> {
+            ForgotPasswordPopup();
+
+
+        });
         mBinding.btnLogin.setOnClickListener(v -> {
             if (isValid()) {
                 if (!Utils.checkInternetConnection(LoginActivity.this)) {
