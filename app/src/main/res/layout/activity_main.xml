@@ -189,6 +189,38 @@
                                     android:textSize="16sp" />
 
                             </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.deliveryboy_location()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="@dimen/view_margin_20"
+                                    android:layout_height="@dimen/view_margin_20"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:tint="@color/drak_text_color"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_rupee_indian" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="Delivery Boy Location"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"

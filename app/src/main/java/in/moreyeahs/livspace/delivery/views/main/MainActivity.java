@@ -300,6 +300,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
+            public void deliveryboy_location() {
+                startActivity(new Intent(MainActivity.this,DrivingDirectionActivity.class));
+            }
+
+            @Override
             public void myAcceptedAssignmentClicked() {
                 checkBackStackStatus();
                 closeDrawer();

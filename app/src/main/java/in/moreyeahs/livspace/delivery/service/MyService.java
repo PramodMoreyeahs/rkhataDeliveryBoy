@@ -1,14 +1,19 @@
 package in.moreyeahs.livspace.delivery.service;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+
+import android.preference.Preference;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -17,6 +22,11 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.JsonObject;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import in.moreyeahs.livspace.delivery.api.RestClient;
 import in.moreyeahs.livspace.delivery.model.LatLongModel;
 import in.moreyeahs.livspace.delivery.utilities.RxBus;
@@ -35,6 +45,7 @@ public class MyService extends Service implements GoogleApiClient.ConnectionCall
     private static final String LOGSERVICE = "#######";
     Utils utils;
     MainActivity activity;
+    String state="",city="",pincode="",address;
 
     @Override
     public void onCreate() {
@@ -83,7 +94,10 @@ public class MyService extends Service implements GoogleApiClient.ConnectionCall
         LatLng mLocation = (new LatLng(location.getLatitude(), location.getLongitude()));
         //EventBus.getDefault().post(mLocation);
         RxBus.getInstance().sendEvent(new LatLng(location.getLatitude(),location.getLongitude()));
+        getAddressFromLatlog(location.getLatitude(),location.getLongitude());
         API(location.getLatitude(), location.getLongitude());
+        SharePrefs.getInstance(activity).putString(SharePrefs.LAT, String.valueOf(location.getLongitude()));
+        SharePrefs.getInstance(activity).putString(SharePrefs.LONG, String.valueOf(location.getLatitude()));
     }
 
 
@@ -147,7 +161,9 @@ public class MyService extends Service implements GoogleApiClient.ConnectionCall
         if (utils.isNetworkAvailable()) {
 
                 int peopleId = SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID);
-                Postlatlong(new LatLongModel(latitude, longitude, peopleId));
+
+
+                Postlatlong(new LatLongModel(latitude, longitude, peopleId,state,city,pincode,address));
 
         } else {
             utils.setToast(MyService.this, "Please Connect to Internet");
@@ -197,4 +213,26 @@ public class MyService extends Service implements GoogleApiClient.ConnectionCall
 
     }
 
+    public void getAddressFromLatlog(Double lat, Double log) {
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            addresses = geocoder.getFromLocation(lat, log, 1);
+            String addressess = addresses.get(0).getAddressLine(0);
+            address=addressess;
+             state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+            addresses.get(0).getLocality();
+            pincode=postalCode;
+            city=addresses.get(0).getLocality();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("TAG", "getAddressFromLatlog:>>> " + e);
+        }
+
+
+    }
 }

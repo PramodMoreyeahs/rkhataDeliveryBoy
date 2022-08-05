@@ -96,7 +96,7 @@ public class DrivingDirectionActivity extends FragmentActivity implements OnMapR
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        Intent intent = getIntent();
+       Intent intent = getIntent();
         SortedOrdersModel = (ArrayList<SortedOrdersModel>) intent.getSerializableExtra("SortedOrdersModel");
 
         try {
@@ -209,7 +209,6 @@ public class DrivingDirectionActivity extends FragmentActivity implements OnMapR
         String parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + waypoints;
         String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + "AIzaSyBR06JQMaQrd_Fnqn643-IroL_vL_bg9LI";
         System.out.println("url" + url);
-
 
         return url;
     }

@@ -10,6 +10,7 @@ public interface MainListener {
     void myAssignmentClicked();
     void myCashCollectionClicked();
     void myCreditCollectionClicked();
+    void deliveryboy_location();
 
     void myAcceptedAssignmentClicked();
 

@@ -34,8 +34,8 @@ android {
         debug {
             debuggable true
             // applicationIdSuffix '.debug'
-            //buildConfigField("String", "apiEndpoint", "\"https://rkhata.moreyeahs.in\"")
-            buildConfigField("String", "apiEndpoint", "\"http://7ca3-103-15-67-130.ngrok.io\"")
+            buildConfigField("String", "apiEndpoint", "\"https://rkhata.moreyeahs.in\"")
+           // buildConfigField("String", "apiEndpoint", "\"http://2884-103-15-67-130.ngrok.io\"")
            // buildConfigField("String", "apiEndpoint", "\"https://rkhataadminportal.moreyeahs.in/\"")
             buildConfigField("String", "playStoreURL", "\"https://play.google.com/store/apps/details?id=com.sk.skdelevery\"")
         }

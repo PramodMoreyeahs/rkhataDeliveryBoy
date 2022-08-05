@@ -45,6 +45,8 @@ public class SharePrefs {
     public static String HISTORY_MODEL = "History_model";
     public static String UPDATE_DATA = "Update_data";
     public static String FLAG = "flag";
+    public static String LAT = "lat";
+    public static String LONG = "long";
     // HDFC credentials
     public static final String GATWAY_URL = "gatway_url";
     public static final String HAS_RETURN_ORDER = "cancel_url";
